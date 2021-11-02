@@ -1,5 +1,5 @@
 import React from 'react';
-import './popup-menu.css';
+import "../../styles/index.scss"
 
 interface DataProps {
     fruits: { item: string; id: number; }[]
@@ -20,13 +20,13 @@ const PopupMenu:React.FC<DataProps> = props => {
       let className = 'popup-menu'
 
       if(props.active) {
-        className += ' hide'
+        className += ' active'
       }
 
     return (
-        <ul className={className}>
+        <div className={className}>
             {elements}
-        </ul>
+        </div>
     )
   }
   

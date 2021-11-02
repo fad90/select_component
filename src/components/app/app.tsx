@@ -1,21 +1,22 @@
 import React from 'react';
 import { useState } from 'react';
-import InutField from '../input-field/input-field';
+import SelectField from '../input-field/input-field';
 import PopupMenu from '../popup-menu/popup-menu';
+import '../../styles/index.scss'
 
 
 const App:React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const fruitData = [
-    { item: "apple", id: 1 },
-    { item: "blueberry", id: 2 },
-    { item: "grape", id: 3 },
-    { item: "banana", id: 4 },
-    { item: "peach", id: 5 },
-    { item: "pineapple", id: 6 },
-    { item: "nectarine", id: 7 },
-    { item: "strawberry", id: 8 },
+    { item: "Apple", id: 1 },
+    { item: "Blueberry", id: 2 },
+    { item: "Grape", id: 3 },
+    { item: "Banana", id: 4 },
+    { item: "Peach", id: 5 },
+    { item: "Pineapple", id: 6 },
+    { item: "Nectarine", id: 7 },
+    { item: "Strawberry", id: 8 },
   ];
 
   const showMenu = () => {
@@ -24,7 +25,7 @@ const App:React.FC = () => {
 
   return (
     <div className="app">
-      <InutField showMenu={showMenu} />
+      <SelectField showMenu={showMenu} />
       <PopupMenu  fruits={fruitData} active={isActive}/>
     </div>
   );

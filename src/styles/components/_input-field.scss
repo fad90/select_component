@@ -1,0 +1,44 @@
+.select {
+  margin: 20px 0 10px 0;
+  position: relative;
+}
+.select__input {
+  width: $component-width;
+  background-color: $input-bg;
+  padding: 0 8px;
+  border-radius: $component-border-radius;
+  box-shadow: $component-shadow;
+  cursor: $cursor-pinter;
+  color: $txt-input-color;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 35px;
+}
+.select__marks {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.select__marks-cross {
+  font-size: 18px;
+  cursor: $cursor-pinter;
+  color: $mark-color;
+  &:hover {
+    color: rgb(105, 105, 105);
+  }
+}
+.select__marks-arrow{
+  border-color: $mark-color rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  border-style: solid;
+  border-width: 5px 5px .5px;
+  height: 0;
+  width: 0;
+  cursor: $cursor-pinter;
+  margin: 0 10px;
+  &:hover {
+    border-color: rgb(105, 105, 105) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  }
+}

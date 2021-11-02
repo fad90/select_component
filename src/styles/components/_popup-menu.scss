@@ -1,0 +1,24 @@
+.popup-menu {
+    width: $component-width;
+    background-color: $popup-bg;
+    box-shadow: $component-shadow;
+    border-radius: $component-border-radius;
+    max-height: $popup-max-height;
+    overflow-y: auto;
+    display: none;
+}
+.popup-menu__item {
+    cursor: $cursor-pinter;
+    color: $txt-popup-color;
+    line-height: 25px;
+    padding: 0 8px;
+    font-weight: 500;
+    &:hover {
+        background-color: #ebf5ff;
+        color: #4d6886;
+    }
+}
+
+.active {
+    display: block;
+}

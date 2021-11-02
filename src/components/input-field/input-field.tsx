@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
+import '../../styles/index.scss'
 
 interface MenuProps {
     showMenu(): void
 }
 
-const InutField: React.FC<MenuProps> = props => {
+const SelectField: React.FC<MenuProps> = props => {
     const [text, setText] = useState<string>('')
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,18 +21,22 @@ const InutField: React.FC<MenuProps> = props => {
     }
 
     return (
-        <div>
+        <div className="select">
             <input
                 type="text"
-                className="input"
+                className="select__input"
                 onChange={changeHandler}
                 value={text}
                 onKeyPress={keyPressHandler}
                 onClick={props.showMenu}
-                // onClick={showMenu}
+                placeholder="All Fruits"
             />
+            <div className="select__marks">
+                <span className="select__marks-cross">×</span>
+                <span className="select__marks-arrow"></span>
+            </div>
         </div>
     );
 }
 
-export default InutField;
+export default SelectField;
