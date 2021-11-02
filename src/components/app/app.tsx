@@ -5,8 +5,9 @@ import PopupMenu from '../popup-menu/popup-menu';
 import '../../styles/index.scss'
 
 
-const App:React.FC = () => {
+const App: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [selected, setSelected] = useState<string>("");
 
   const fruitData = [
     { item: "Apple", id: 1 },
@@ -25,8 +26,16 @@ const App:React.FC = () => {
 
   return (
     <div className="app">
-      <SelectField showMenu={showMenu} />
-      <PopupMenu  fruits={fruitData} active={isActive}/>
+      <SelectField 
+      showMenu={showMenu} 
+      selected={selected} 
+      />
+      <PopupMenu 
+      fruits={fruitData} 
+      active={isActive} 
+      setIsActive={setIsActive}
+      setSelected={setSelected} 
+      />
     </div>
   );
 }
