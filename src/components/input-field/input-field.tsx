@@ -4,7 +4,9 @@ import '../../styles/index.scss'
 
 interface MenuProps {
     showMenu(): void
+    setSelected: (selected: string) => void
     selected: string
+    active: boolean
 }
 
 const SelectField: React.FC<MenuProps> = props => {
@@ -20,16 +22,25 @@ const SelectField: React.FC<MenuProps> = props => {
     //         setText('')
     //     }
     // }
-    let className = 'select__input'
-    if(props.selected !== '') {
-        className += ' selected'
+    const deleteSelectedItem = () => {
+        props.setSelected('')
+    }
+
+    let classNameInput = 'select__input'
+    if (props.selected !== '') {
+        classNameInput += ' select__input_selected'
+    }
+
+    let classNameArrow = 'select__marks-arrow'
+    if (props.active) {
+        classNameArrow += ' select__marks-arrow_active'
     }
 
     return (
         <div className="select">
             <input
                 type="text"
-                className={className}
+                className={classNameInput}
                 // onChange={changeHandler}
                 value={props.selected}
                 // onKeyPress={keyPressHandler}
@@ -37,8 +48,17 @@ const SelectField: React.FC<MenuProps> = props => {
                 placeholder="All Fruits"
             />
             <div className="select__marks">
-                <span className="select__marks-cross">×</span>
-                <span className="select__marks-arrow"></span>
+                <span
+                    className="select__marks-cross"
+                    onClick={deleteSelectedItem}
+                >
+                    ×
+                </span>
+                <span
+                    className={classNameArrow}
+                    onClick={props.showMenu}
+                >
+                </span>
             </div>
         </div>
     );

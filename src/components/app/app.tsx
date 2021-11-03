@@ -29,6 +29,8 @@ const App: React.FC = () => {
       <SelectField 
       showMenu={showMenu} 
       selected={selected} 
+      active={isActive}
+      setSelected={setSelected}
       />
       <PopupMenu 
       fruits={fruitData} 

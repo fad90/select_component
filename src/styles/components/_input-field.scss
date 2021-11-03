@@ -42,9 +42,14 @@
     border-color: rgb(105, 105, 105) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
   }
 }
-.selected {
+.select__input_selected {
   background-color: #c3e4ff;
   color: #054175;
   font-size: 13px;
   font-weight: 600;
+}
+.select__marks-arrow_active {
+  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $mark-color;
+  border-width: 0 5px 5px;
+  top: -2px;
 }
