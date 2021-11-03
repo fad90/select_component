@@ -8,6 +8,7 @@ import '../../styles/index.scss'
 const App: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>("");
+  // const [term, setTerm] = useState<string>("");
 
   const fruitData = [
     { item: "Apple", id: 1 },
@@ -23,6 +24,17 @@ const App: React.FC = () => {
   const showMenu = () => {
     setIsActive(!isActive)
   }
+
+  // const search = (items:{ item: string; id: number }[], term:string) => {
+  //   if(term.length === 0) {
+  //     return items;
+  //   }
+  //   return items.filter((item) => {
+  //     return item.item.indexOf(term) > -1;
+  //   })
+  // }
+
+  // const visibleItems = search(fruitData, term);
 
   return (
     <div className="app">

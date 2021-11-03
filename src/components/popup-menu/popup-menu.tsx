@@ -2,7 +2,7 @@ import React from 'react';
 import "../../styles/index.scss"
 
 interface DataProps {
-  fruits: { item: string; id: number; }[]
+  fruits: { item: string; id: number }[]
   active: boolean
   setIsActive: (active: boolean) => void
   setSelected: (selected: string) => void

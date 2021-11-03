@@ -42,7 +42,7 @@ const SelectField: React.FC<MenuProps> = props => {
                 type="text"
                 className={classNameInput}
                 // onChange={changeHandler}
-                value={props.selected}
+                defaultValue={props.selected}
                 // onKeyPress={keyPressHandler}
                 onClick={props.showMenu}
                 placeholder="All Fruits"
