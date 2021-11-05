@@ -17,7 +17,7 @@ const PopupMenu: React.FC<DataProps> = props => {
         className="popup-menu__item"
         onClick={() => {
           props.setSelected(item)
-          props.setIsActive(false)
+          // props.setIsActive(false)
         }}
       //  onClick={() => {props.setSelected(item)}}
       >

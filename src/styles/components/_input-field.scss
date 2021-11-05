@@ -2,25 +2,103 @@
   margin: 20px 0 10px 0;
   position: relative;
 }
-.select__input {
-  width: $component-width;
-  background-color: $input-bg;
-  padding: 0 8px;
+.select__container {
+  width: 100%;
+  display: flex;
+  background-color: #eef2fb;
+  padding: 10px 10px;
   border-radius: $component-border-radius;
-  box-shadow: $component-shadow;
-  cursor: $cursor-pinter;
-  color: $txt-input-color;
+}
+.select__placeholder {
+  display: flex;
+  align-items: center;
+  color: #8996ac;
   font-size: 13px;
   font-weight: 500;
-  line-height: 35px;
+  padding: 0 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
 }
+.select-wrapper {
+  position: relative;
+  min-width: 2em;
+  min-height: 1.4em;
+  height: 100%;
+}
+.select__text {
+  white-space: pre;
+  height: 0;
+  visibility: hidden;
+  /* max-width : could be wised to set a maximum width and overflow:hidden; */
+}
+.select__input {
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border: 1px solid black;
+  border: none;
+  font-size: 13px;
+  color: #4b5e80;
+  font-weight: 500;
+  // added styles 
+  background: none rgba(0, 0, 0, 0);
+  font-family: inherit;
+  font-size: inherit;
+  position: absolute;
+  vertical-align: top;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+// .select-wrapper {
+//   margin-left: 10px;
+//   display: inline-block;
+//   max-width: 388px - 39.6px;
+//   width: 100%;
+// }
+// .select__input {
+//   width: 5px;
+//   box-sizing: content-box;
+//   background: none rgba(0,0,0,0);
+//   cursor: $cursor-pinter;
+//   color: $txt-input-color;
+//   font-size: 13px;
+//   font-weight: 500;
+//   line-height: 35px;
+
+//   &::placeholder {
+//     font-size: 13px;
+//     font-weight: 500;
+//     line-height: 35px;
+//   }
+// }
+// .select__text {
+//   display: flex;
+//   align-items: center;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   visibility: hidden;
+//   height: 100%;
+//   font-size: 13px;
+//   color: #4b5e80;
+//   font-weight: 500;
+//   margin-left: 10px;
+//   white-space: pre;
+//   height: 0;
+// }
 .select__marks {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 .select__marks-cross {
   font-size: 18px;
@@ -30,10 +108,10 @@
     color: rgb(105, 105, 105);
   }
 }
-.select__marks-arrow{
+.select__marks-arrow {
   border-color: $mark-color rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
   border-style: solid;
-  border-width: 5px 5px .5px;
+  border-width: 5px 5px 0.5px;
   height: 0;
   width: 0;
   cursor: $cursor-pinter;
@@ -53,3 +131,9 @@
   border-width: 0 5px 5px;
   top: -2px;
 }
+.select__placeholder_remove {
+  display: none;
+}
+// .select__text_visiable {
+//   visibility: visible;
+// }
