@@ -6,7 +6,6 @@ interface DataProps {
   active: boolean
   setIsActive: (active: boolean) => void
   setSelected: (selected: string) => void
-  // setSelected: (event:React.MouseEvent) => void
 }
 
 const PopupMenu: React.FC<DataProps> = props => {
@@ -18,7 +17,6 @@ const PopupMenu: React.FC<DataProps> = props => {
         className="popup-menu__item"
         onClick={() => {
           props.setSelected(item)
-          // props.setIsActive(false)
         }}
       >
         {item}

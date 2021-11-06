@@ -8,7 +8,6 @@ import '../../styles/index.scss'
 const App: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [selected, setSelected] = useState<any>([]);
-  // const [selected, setSelected] = useState<string>("");
   const [term, setTerm] = useState<string>("");
 
   const fruitData = [
@@ -27,9 +26,7 @@ const App: React.FC = () => {
   const selectItems = (item: string) => {
     let arr = []
     arr.push(item)
-    setSelected((selected: any) => [...selected, item])
-    
-    
+    setSelected((selected: any) => [...selected, item]) 
   }
 
 
@@ -41,6 +38,11 @@ const App: React.FC = () => {
 
   const onSearchChange = (term: string) => {
     setTerm(term);
+  }
+
+  const deleteSelectedItem = () => {
+    setSelected([]);
+    setIsActive(false)
   }
 
   const search = (items:{ item: string; id: number }[], term:string) => {
@@ -60,17 +62,15 @@ const App: React.FC = () => {
       showMenu={showMenu} 
       selected={selected} 
       active={isActive}
-      // setSelected={setSelected}
       onSearchChange={onSearchChange}
+      deleteSelectedItem={deleteSelectedItem}
       />
       <PopupMenu 
       fruits={visibleItems} 
       active={isActive} 
       setIsActive={setIsActive}
-      // setSelected={setSelected} 
       setSelected={selectItems}
       />
-      {/* <div>{selected.join(", ")}</div> */}
     </div>
   );
 }
