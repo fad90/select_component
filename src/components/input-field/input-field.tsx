@@ -4,9 +4,9 @@ import '../../styles/index.scss'
 
 interface MenuProps {
     showMenu(): void
-    setSelected: (selected: string) => void
+    // setSelected: (selected: string) => void
     onSearchChange: (term: string) => void
-    selected: string
+    selected: any
     active: boolean
 }
 
@@ -25,7 +25,7 @@ const SelectField: React.FC<MenuProps> = props => {
     //     }
     // }
     const deleteSelectedItem = () => {
-        props.setSelected('')
+        // props.setSelected('')
     }
 
     const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,8 +51,16 @@ const SelectField: React.FC<MenuProps> = props => {
 
     if (props.active) {
         textInput.current!.focus();
-        placeholderClassName += ' select__placeholder_remove' 
+        placeholderClassName += ' select__placeholder_remove'
         // selectTextClassName += ' select__text_visiable'
+    }
+    let selectedElClassName = 'select__selected-element'
+    let selectContainerClass = 'select__container'
+
+    if (props.selected.length > 0) {
+        selectedElClassName += ' select__selected-element_block'
+        selectContainerClass += ' select__container_selected'
+        placeholderClassName += ' select__placeholder_remove'
     }
 
     return (
@@ -60,11 +68,15 @@ const SelectField: React.FC<MenuProps> = props => {
             className="select"
         >
             <span
-                className="select__container"
+                className={selectContainerClass}
                 onClick={props.showMenu}
             >
-                <div 
-                className={placeholderClassName}
+                <span
+                    className={selectedElClassName}>
+                    {props.selected.join(", ")}
+                </span>
+                <div
+                    className={placeholderClassName}
                 >
                     Выберите элемент
                 </div>
@@ -75,12 +87,11 @@ const SelectField: React.FC<MenuProps> = props => {
                         ref={textInput}
                         value={term}
                         onChange={onSearchChange}
-                        // onChange={changeHandler}
+                    // onChange={changeHandler}
                     // onKeyPress={keyPressHandler}
-                    // placeholder="All Fruits"
                     />
                     <div className={selectTextClassName}>
-                        {term} 
+                        {term}
                     </div>
                 </div>
             </span>

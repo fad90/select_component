@@ -134,6 +134,19 @@
 .select__placeholder_remove {
   display: none;
 }
+.select__selected-element {
+  display: none;
+}
+.select__selected-element_block {
+  display: block;
+  color: #054175;
+  font-size: 13px;
+  font-weight: 600;
+  // background-color: #c3e4ff;
+}
+.select__container_selected {
+  background-color: #c3e4ff;
+}
 // .select__text_visiable {
 //   visibility: visible;
 // }

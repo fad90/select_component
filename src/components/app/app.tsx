@@ -7,7 +7,8 @@ import '../../styles/index.scss'
 
 const App: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [selected, setSelected] = useState<string>("");
+  const [selected, setSelected] = useState<any>([]);
+  // const [selected, setSelected] = useState<string>("");
   const [term, setTerm] = useState<string>("");
 
   const fruitData = [
@@ -20,6 +21,18 @@ const App: React.FC = () => {
     { item: "Nectarine", id: 7 },
     { item: "Strawberry", id: 8 },
   ];
+
+  
+  
+  const selectItems = (item: string) => {
+    let arr = []
+    arr.push(item)
+    setSelected((selected: any) => [...selected, item])
+    
+    
+  }
+
+
 
   const showMenu = () => {
     setIsActive(!isActive);
@@ -47,16 +60,17 @@ const App: React.FC = () => {
       showMenu={showMenu} 
       selected={selected} 
       active={isActive}
-      setSelected={setSelected}
+      // setSelected={setSelected}
       onSearchChange={onSearchChange}
       />
       <PopupMenu 
       fruits={visibleItems} 
       active={isActive} 
       setIsActive={setIsActive}
-      setSelected={setSelected} 
-      // setSelected={(selected) => console.log(selected)}
+      // setSelected={setSelected} 
+      setSelected={selectItems}
       />
+      {/* <div>{selected.join(", ")}</div> */}
     </div>
   );
 }
