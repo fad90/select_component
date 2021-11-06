@@ -5,9 +5,12 @@
 .select__container {
   width: 100%;
   display: flex;
-  background-color: #eef2fb;
+  background-color: $input-bg;
   padding: 10px 10px;
   border-radius: $component-border-radius;
+  &.select__container_selected {
+    background-color: #c3e4ff;
+  }
 }
 .select__placeholder {
   display: flex;
@@ -21,6 +24,9 @@
   left: 0;
   right: 0;
   top: 0;
+  &.select__placeholder_remove {
+    display: none;
+  }
 }
 .select-wrapper {
   position: relative;
@@ -41,7 +47,7 @@
   border: 1px solid black;
   border: none;
   font-size: 13px;
-  color: #4b5e80;
+  color: $txt-input-color;
   font-weight: 500;
   background: none rgba(0, 0, 0, 0);
   font-family: inherit;
@@ -51,6 +57,9 @@
   top: 0;
   left: 0;
   width: 100%;
+  &.select__input_hidden {
+    visibility: hidden;
+  }
 }
 .select__marks {
   position: absolute;
@@ -62,7 +71,7 @@
 }
 .select__marks-cross {
   font-size: 18px;
-  cursor: $cursor-pinter;
+  cursor: pointer;
   color: $mark-color;
   margin-left: 5px;
   &:hover {
@@ -75,42 +84,24 @@
   border-width: 5px 5px 0.5px;
   height: 0;
   width: 0;
-  cursor: $cursor-pinter;
+  cursor: pointer;
   margin: 0 10px;
   &:hover {
     border-color: rgb(105, 105, 105) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
   }
-}
-.select__input_selected {
-  background-color: #c3e4ff;
-  color: #054175;
-  font-size: 13px;
-  font-weight: 600;
-}
-.select__marks-arrow_active {
-  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $mark-color;
-  border-width: 0 5px 5px;
-  top: -2px;
-}
-.select__placeholder_remove {
-  display: none;
+  &.select__marks-arrow_active {
+    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $mark-color;
+    border-width: 0 5px 5px;
+    top: -2px;
+  }
 }
 .select__selected-element {
   display: none;
+  &.select__selected-element_block {
+    display: block;
+    color: #054175;
+    font-size: 13px;
+    font-weight: 600;
+  }
 }
-.select__selected-element_block {
-  display: block;
-  color: #054175;
-  font-size: 13px;
-  font-weight: 600;
-  // background-color: #c3e4ff;
-}
-.select__container_selected {
-  background-color: #c3e4ff;
-}
-.select__input_hidden {
-  visibility: hidden;
-}
-// .select__text_visiable {
-//   visibility: visible;
-// }
+

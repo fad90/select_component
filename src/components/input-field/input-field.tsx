@@ -28,12 +28,11 @@ const SelectField: React.FC<MenuProps> = props => {
 
     const textInput = useRef<HTMLInputElement>(null)
     let placeholderClassName = 'select__placeholder'
-    let selectTextClassName = 'select__text'
-
     if (props.active) {
         textInput.current!.focus();
         placeholderClassName += ' select__placeholder_remove'
     }
+    
     let selectedElClassName = 'select__selected-element'
     let selectContainerClass = 'select__container'
     let inputClassName = 'select__input'
@@ -70,7 +69,7 @@ const SelectField: React.FC<MenuProps> = props => {
                         value={term}
                         onChange={onSearchChange}
                     />
-                    <div className={selectTextClassName}>
+                    <div className="select__text">
                         {term}
                     </div>
                 </div>

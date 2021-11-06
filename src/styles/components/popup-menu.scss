@@ -6,9 +6,12 @@
     max-height: $popup-max-height;
     overflow-y: auto;
     display: none;
+    &.popup-menu_active {
+        display: block;
+    }
 }
 .popup-menu__item {
-    cursor: $cursor-pinter;
+    cursor: pointer;
     color: $txt-popup-color;
     line-height: 25px;
     padding: 0 8px;
@@ -17,8 +20,4 @@
         background-color: #ebf5ff;
         color: #4d6886;
     }
-}
-
-.active {
-    display: block;
 }

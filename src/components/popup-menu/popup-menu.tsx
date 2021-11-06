@@ -27,7 +27,7 @@ const PopupMenu: React.FC<DataProps> = props => {
   let className = 'popup-menu'
 
   if (props.active) {
-    className += ' active'
+    className += ' popup-menu_active'
   }
 
   return (
