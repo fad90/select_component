@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SelectField from '../input-field/input-field';
 import PopupMenu from '../popup-menu/popup-menu';
 import '../../styles/index.scss'
@@ -21,19 +21,15 @@ const App: React.FC = () => {
     { item: "Strawberry", id: 8 },
   ];
 
-  
-  
   const selectItems = (item: string) => {
     let arr = []
     arr.push(item)
-    setSelected((selected: any) => [...selected, item]) 
+    setSelected((selected: any) => [...selected, item])
   }
-
-
 
   const showMenu = () => {
     setIsActive(!isActive);
-    
+
   }
 
   const onSearchChange = (term: string) => {
@@ -45,8 +41,34 @@ const App: React.FC = () => {
     setIsActive(false)
   }
 
-  const search = (items:{ item: string; id: number }[], term:string) => {
-    if(term.length === 0) {
+  useEffect(() => {
+    document.body.addEventListener('keydown', onKeyEnter);
+
+    return function cleanup() {
+      window.removeEventListener('keydown', onKeyEnter);
+    }
+  }, []);
+  let onKeyEnter = (event: any) => {
+    if (event.code === 'Escape') {
+          setIsActive(false)
+        }
+  }
+
+  useEffect(() => {
+    document.body.addEventListener('keydown', onKeyEsc);
+
+    return function cleanup() {
+      window.removeEventListener('keydown', onKeyEsc);
+    }
+  }, []);
+  let onKeyEsc = (event: any) => {
+    if (event.code === 'Enter') {
+          setIsActive(true)
+        }
+  }
+
+  const search = (items: { item: string; id: number }[], term: string) => {
+    if (term.length === 0) {
       return items;
     }
     return items.filter((item) => {
@@ -57,20 +79,26 @@ const App: React.FC = () => {
   const visibleItems = search(fruitData, term);
 
   return (
-    <div className="app">
-      <SelectField 
-      showMenu={showMenu} 
-      selected={selected} 
-      active={isActive}
-      onSearchChange={onSearchChange}
-      deleteSelectedItem={deleteSelectedItem}
-      />
-      <PopupMenu 
-      fruits={visibleItems} 
-      active={isActive} 
-      setIsActive={setIsActive}
-      setSelected={selectItems}
-      />
+    <div
+      className="app"
+    // onKeyPress={onKeyEnter}
+    >
+      <div className="page">
+        <SelectField
+          showMenu={showMenu}
+          selected={selected}
+          active={isActive}
+          onSearchChange={onSearchChange}
+          deleteSelectedItem={deleteSelectedItem}
+        />
+        <PopupMenu
+          fruits={visibleItems}
+          active={isActive}
+          setIsActive={setIsActive}
+          setSelected={selectItems}
+          selected={selected}
+        />
+      </div>
     </div>
   );
 }

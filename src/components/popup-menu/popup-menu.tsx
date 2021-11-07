@@ -1,20 +1,28 @@
 import React from 'react';
+import { useState } from 'react';
 import "../../styles/index.scss"
 
 interface DataProps {
   fruits: { item: string; id: number }[]
   active: boolean
+  selected: any
   setIsActive: (active: boolean) => void
   setSelected: (selected: string) => void
 }
 
 const PopupMenu: React.FC<DataProps> = props => {
+
+  let itemClassName = 'popup-menu__item'
+  // if (props.selected.length > 0) {
+  //   itemClassName += ' popup-menu__item_selected'
+  // }
+
   const elements = props.fruits.map((fruit) => {
     const { item, id } = fruit;
 
     return (
       <div key={id}
-        className="popup-menu__item"
+        className={itemClassName}
         onClick={() => {
           props.setSelected(item)
         }}
@@ -25,10 +33,11 @@ const PopupMenu: React.FC<DataProps> = props => {
   });
 
   let className = 'popup-menu'
-
   if (props.active) {
     className += ' popup-menu_active'
   }
+
+
 
   return (
     <div className={className}>
