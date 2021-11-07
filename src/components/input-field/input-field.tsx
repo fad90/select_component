@@ -47,7 +47,7 @@ const SelectField: React.FC<MenuProps> = props => {
             <div
                 className="select"
             >
-                <span
+                <div
                     className={selectContainerClass}
                     onClick={props.showMenu}
                 >
@@ -58,7 +58,7 @@ const SelectField: React.FC<MenuProps> = props => {
                     <div
                         className={placeholderClassName}
                     >
-                        Выберите элемент
+                        Выберите фрукт
                     </div>
                     <div className="select-wrapper">
                         <input
@@ -72,7 +72,7 @@ const SelectField: React.FC<MenuProps> = props => {
                             {term}
                         </div>
                     </div>
-                </span>
+                </div>
                 <div className="select__marks">
                     <span
                         className="select__marks-cross"

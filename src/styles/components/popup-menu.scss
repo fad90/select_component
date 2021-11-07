@@ -1,26 +1,30 @@
 .popup-menu {
-    width: 100%;
-    background-color: $popup-bg;
-    box-shadow: $component-shadow;
-    border-radius: $component-border-radius;
-    max-height: $popup-max-height;
-    overflow-y: auto;
-    display: none;
-    &.popup-menu_active {
-        display: block;
-    }
+  width: 100%;
+  background-color: $popup-bg;
+  box-shadow: $component-shadow;
+  border-radius: $component-border-radius;
+  max-height: $popup-max-height;
+  overflow-y: auto;
+  display: none;
+
+  &.popup-menu_active {
+    display: block;
+  }
 }
+
 .popup-menu__item {
-    cursor: pointer;
-    color: $txt-popup-color;
-    line-height: 25px;
-    padding: 0 8px;
-    font-weight: 500;
-    &:hover {
-        background-color: #ebf5ff;
-        color: #4d6886;
-    }
+  cursor: pointer;
+  color: $txt-popup-color;
+  line-height: 25px;
+  padding: 0 8px;
+  font-weight: 500;
+  
+  &:hover {
+    background-color: $item-hover-bg-color;
+    color: $item-hover-color;
+  }
 }
+
 .popup-menu__item_selected {
-    background-color: aquamarine;
+  background-color: aquamarine;
 }
