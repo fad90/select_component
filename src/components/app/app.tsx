@@ -22,7 +22,7 @@ const App: React.FC = () => {
   ];
 
   const selectItems = (item: string) => {
-    let arr = []
+    const arr = []
     arr.push(item)
     setSelected((selected: any) => [...selected, item])
   }
@@ -48,7 +48,7 @@ const App: React.FC = () => {
       window.removeEventListener('keydown', onKeyEnter);
     }
   }, []);
-  let onKeyEnter = (event: any) => {
+  const onKeyEnter = (event: any) => {
     if (event.code === 'Escape') {
           setIsActive(false)
         }
@@ -61,7 +61,7 @@ const App: React.FC = () => {
       window.removeEventListener('keydown', onKeyEsc);
     }
   }, []);
-  let onKeyEsc = (event: any) => {
+  const onKeyEsc = (event: any) => {
     if (event.code === 'Enter') {
           setIsActive(true)
         }

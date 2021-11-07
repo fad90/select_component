@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+
 import "../../styles/index.scss"
 
 interface DataProps {
@@ -12,7 +12,7 @@ interface DataProps {
 
 const PopupMenu: React.FC<DataProps> = props => {
 
-  let itemClassName = 'popup-menu__item'
+  const itemClassName = 'popup-menu__item'
   // if (props.selected.length > 0) {
   //   itemClassName += ' popup-menu__item_selected'
   // }
