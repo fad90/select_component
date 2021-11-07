@@ -9,6 +9,7 @@ const App: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [selected, setSelected] = useState<any>([]);
   const [term, setTerm] = useState<string>("");
+  const [termInput, setTermInput] = useState<string>("")
 
   const fruitData = [
     { item: "Apple", id: 1 },
@@ -37,8 +38,9 @@ const App: React.FC = () => {
   }
 
   const deleteSelectedItem = () => {
+    setTermInput("")
     setSelected([]);
-    setIsActive(false)
+    setIsActive(false);
   }
 
   useEffect(() => {
@@ -81,7 +83,6 @@ const App: React.FC = () => {
   return (
     <div
       className="app"
-    // onKeyPress={onKeyEnter}
     >
       <div className="page">
         <SelectField
@@ -90,6 +91,8 @@ const App: React.FC = () => {
           active={isActive}
           onSearchChange={onSearchChange}
           deleteSelectedItem={deleteSelectedItem}
+          termInput={termInput}
+          setTermInput={setTermInput}
         />
         <PopupMenu
           fruits={visibleItems}

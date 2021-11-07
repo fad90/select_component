@@ -9,14 +9,16 @@ interface MenuProps {
     onSearchChange: (term: string) => void
     selected: any
     active: boolean
+    termInput: string
+    setTermInput: (term:string) => void  
 }
 
 const SelectField: React.FC<MenuProps> = props => {
-    const [term, setTerm] = useState<string>('')
+    // const [term, setTerm] = useState<string>('')
 
     const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value;
-        setTerm(term);
+        props.setTermInput(term);
         props.onSearchChange(term);
     }
 
@@ -65,11 +67,11 @@ const SelectField: React.FC<MenuProps> = props => {
                             type="text"
                             className={inputClassName}
                             ref={textInput}
-                            value={term}
+                            value={props.termInput}
                             onChange={onSearchChange}
                         />
                         <div className="select__text">
-                            {term}
+                            {props.termInput}
                         </div>
                     </div>
                 </div>
