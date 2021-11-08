@@ -13,9 +13,6 @@ interface DataProps {
 const PopupMenu: React.FC<DataProps> = props => {
 
   const itemClassName = 'popup-menu__item'
-  // if (props.selected.length > 0) {
-  //   itemClassName += ' popup-menu__item_selected'
-  // }
 
   const elements = props.fruits.map((fruit) => {
     const { item, id } = fruit;

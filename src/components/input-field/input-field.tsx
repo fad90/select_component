@@ -1,11 +1,9 @@
 import React from 'react';
 import { useState, useRef } from 'react';
 import '../../styles/index.scss'
-
 interface MenuProps {
     showMenu(): void
     deleteSelectedItem(): void
-    // setSelected: (selected: string) => void
     onSearchChange: (term: string) => void
     selected: any
     active: boolean
@@ -14,7 +12,6 @@ interface MenuProps {
 }
 
 const SelectField: React.FC<MenuProps> = props => {
-    // const [term, setTerm] = useState<string>('')
 
     const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value;
