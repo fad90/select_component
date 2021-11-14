@@ -7,7 +7,9 @@ interface DataProps {
   active: boolean
   selected: any
   setIsActive: (active: boolean) => void
-  setSelected: (selected: string) => void
+  selectMultiple: (selected: string, e: any) => void
+  multiple: boolean
+  selectOne: (selected: string) => void
 }
 
 const PopupMenu: React.FC<DataProps> = props => {
@@ -20,8 +22,8 @@ const PopupMenu: React.FC<DataProps> = props => {
     return (
       <div key={id}
         className={itemClassName}
-        onClick={() => {
-          props.setSelected(item)
+        onClick={(e) => {
+          (props.multiple) ? props.selectMultiple(item, e) : props.selectOne(item)
         }}
       >
         {item}
@@ -33,8 +35,6 @@ const PopupMenu: React.FC<DataProps> = props => {
   if (props.active) {
     className += ' popup-menu_active'
   }
-
-
 
   return (
     <div className={className}>
