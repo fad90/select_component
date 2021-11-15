@@ -1,17 +1,7 @@
 import React from 'react';
-import styles from './popup-menu.module.scss'
-// import "../../styles/index.scss"
+import styles from './popup-menu.module.scss';
+import { DataProps } from '../../types';
 
-interface DataProps {
-  fruits: { item: string; id: number }[]
-  active: boolean
-  selected: any
-  setIsActive: (active: boolean) => void
-  selectMultiple: (selected: string, e: any) => void
-  multiple: boolean
-  selectOne: (selected: string) => void
-  highlight: boolean
-}
 
 const PopupMenu: React.FC<DataProps> = props => {
   const itemClassName = `${styles.item}`

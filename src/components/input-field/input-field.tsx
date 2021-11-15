@@ -1,15 +1,8 @@
 import React from 'react';
 import { useState, useRef } from 'react';
-import styles from './input-field.module.scss'
-interface MenuProps {
-    showMenu(): void
-    deleteSelectedItem(): void
-    selected: any
-    active: boolean
-    termInput: string
-    setTermInput: (term: string) => void
-    multiple: boolean
-}
+import styles from './input-field.module.scss';
+import { MenuProps } from '../../types';
+
 
 const SelectField: React.FC<MenuProps> = props => {
 
