@@ -1,0 +1,35 @@
+@import '../../variables';
+.popup {
+    width: 100%;
+    background-color: $secondary;
+    box-shadow: $component-shadow;
+    border-radius: $component-border-radius;
+    max-height: $popup-max-height;
+    overflow-y: auto;
+    display: none;
+  
+    &.active {
+      display: block;
+    }
+  }
+  
+  .item {
+    cursor: pointer;
+    color: $onSecondary;
+    line-height: 25px;
+    padding: 0 8px;
+    font-weight: 500;
+    
+    &:hover {
+      background-color: $bg-secondary-hover;
+      color: $txt-secondary-hover;
+    }
+  }
+  
+  .popup-menu__item_selected {
+    background-color: aquamarine;
+  }
+  
+  .highlight {
+    background-color: rgb(160, 217, 255);
+  }

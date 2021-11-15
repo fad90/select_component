@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import SelectField from '../input-field/input-field';
-import PopupMenu from '../popup-menu/popup-menu';
-import Loader from '../loader/loader';
-import '../../styles/index.scss';
+import SelectField from '../input-field';
+import PopupMenu from '../popup-menu';
+import Loader from '../loader';
+import styles from './app.module.scss'
 import '../../useDebounce'
 import useDebounce from '../../useDebounce';
 
@@ -26,6 +26,7 @@ const App: React.FC = () => {
   const [data, setData] = useState<any>(fruitData)
   const [loading, setLoading] = useState<boolean>(false)
   const [multiple, setMultiple] = useState<boolean>(true)
+  const [highlight, setHighlight] = useState<boolean>(false)
 
   const debouncedSearchTerm = useDebounce(termInput, 1000);
 
@@ -71,7 +72,7 @@ const App: React.FC = () => {
             setData(filteredArrayServer)
           })
           .catch(() => {
-            console.log("success")
+            console.log("error")
           })
       }
     
@@ -82,6 +83,8 @@ const App: React.FC = () => {
     const arr = []
     arr.push(item)
     setSelected((selected: any) => [...selected, item])
+
+    setHighlight(true)
     // const targetClassName = e.target.className + ' selected'
     
     // console.log(targetClassName)
@@ -136,14 +139,15 @@ const App: React.FC = () => {
     selected={selected}
     multiple={multiple}
     selectOne={selectOne}
+    highlight={highlight}
   /> : null;
 
 
   return (
     <div
-      className="app"
+      className={styles.app}
     >
-      <div className="page">
+      <div className={styles.page}>
         <SelectField
           showMenu={showMenu}
           selected={selected}

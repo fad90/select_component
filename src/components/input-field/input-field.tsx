@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useRef } from 'react';
-import '../../styles/index.scss'
+import styles from './input-field.module.scss'
 interface MenuProps {
     showMenu(): void
     deleteSelectedItem(): void
@@ -18,32 +18,32 @@ const SelectField: React.FC<MenuProps> = props => {
         props.setTermInput(term);
     }
 
-    let classNameArrow = 'select__marks-arrow'
+    let classNameArrow = `${styles.arrow}`
     if (props.active) {
-        classNameArrow += ' select__marks-arrow_active'
+        classNameArrow += ` ${styles.active}`
     }
 
     const textInput = useRef<HTMLInputElement>(null)
-    let placeholderClassName = 'select__placeholder'
+    let placeholderClassName = `${styles.placeholder}`
     if (props.active) {
         textInput.current!.focus();
-        placeholderClassName += ' select__placeholder_remove'
+        placeholderClassName += ` ${styles.hide}`
     }
 
-    let selectedElClassName = 'select__selected-element'
-    let selectContainerClass = 'select__container'
-    let inputClassName = 'select__input'
+    let selectedElClassName = `${styles.selected_el}`
+    let selectContainerClass = `${styles.container}`
+    let inputClassName = `${styles.input}`
 
     if (props.selected.length > 0) {
-        selectedElClassName += ' select__selected-element_block'
-        selectContainerClass += ' select__container_selected'
-        placeholderClassName += ' select__placeholder_remove'
-        inputClassName += ' select__input_hidden'
+        selectedElClassName += ` ${styles.selected_block}`
+        selectContainerClass += ` ${styles.selected}`
+        placeholderClassName += ` ${styles.hide}`
+        inputClassName += ` ${styles.input_hidden}`
     }
 
     return (
         <div
-            className="select"
+            className={styles.select}
         >
             <div
                 className={selectContainerClass}
@@ -58,7 +58,7 @@ const SelectField: React.FC<MenuProps> = props => {
                 >
                     Выберите фрукт
                 </div>
-                <div className="select-wrapper">
+                <div className={styles.wrapper}>
                     <input
                         type="text"
                         className={inputClassName}
@@ -66,14 +66,14 @@ const SelectField: React.FC<MenuProps> = props => {
                         value={props.termInput}
                         onChange={onSearchChange}
                     />
-                    <div className="select__text">
+                    <div className={styles.text}>
                         {props.termInput}
                     </div>
                 </div>
             </div>
-            <div className="select__marks">
+            <div className={styles.marks}>
                 <span
-                    className="select__marks-cross"
+                    className={styles.cross}
                     onClick={props.deleteSelectedItem}
                 >
                     ×
