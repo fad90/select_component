@@ -1,122 +1,121 @@
-@import '../../variables';
+@import "../../variables";
 
 .select {
-    margin: 20px 0 10px;
-    position: relative;
+  position: relative;
+  margin: 0 0 10px 0;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  background-color: $primary;
+  padding: 10px;
+  border-radius: $component-border-radius;
+
+  &.selected {
+    background-color: $bg-primary-selected;
   }
-  
-  .container {
-    width: 100%;
-    display: flex;
-    background-color: $primary;
-    padding: 10px;
-    border-radius: $component-border-radius;
-  
-    &.selected {
-      background-color: $bg-primary-selected;
-    }
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  color: $onPrimary;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  &.hide {
+    display: none;
   }
-  
-  .placeholder {
-    display: flex;
-    align-items: center;
-    color: $onPrimary;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 0 10px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-  
-    &.hide {
-      display: none;
-    }
-  }
-  
-  .wrapper {
-    position: relative;
-    min-width: 2em;
-    min-height: 1.4em;
-    height: 100%;
-    padding: 0 3px;
-  }
-  
-  .text {
-    white-space: pre;
-    height: 0;
+}
+
+.wrapper {
+  position: relative;
+  min-width: 2em;
+  min-height: 1.4em;
+  height: 100%;
+  padding: 0 3px;
+}
+
+.text {
+  white-space: pre;
+  height: 0;
+  visibility: hidden;
+}
+
+.input {
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+  color: $txt-primary;
+  font-weight: 500;
+  background: none rgba(0, 0, 0, 0%);
+  font-family: inherit;
+  font-size: 1rem;
+  position: absolute;
+  vertical-align: top;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &.input_hidden {
     visibility: hidden;
   }
-  
-  .input {
-    box-sizing: content-box;
-    padding: 0;
-    margin: 0;
-    color: $txt-primary;
-    font-weight: 500;
-    background: none rgba(0, 0, 0, 0%);
-    font-family: inherit;
+}
+
+.marks {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.cross {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: $marks-primary;
+  margin-left: 5px;
+
+  &:hover {
+    color: $marks-primary-hover;
+  }
+}
+
+.arrow {
+  border-color: $marks-primary rgba(0, 0, 0, 0%) rgba(0, 0, 0, 0%);
+  border-style: solid;
+  border-width: 5px 5px 0.5px;
+  height: 0;
+  width: 0;
+  cursor: pointer;
+  margin: 0 10px;
+
+  &:hover {
+    border-color: $marks-primary-hover rgba(0, 0, 0, 0%) rgba(0, 0, 0, 0%);
+  }
+
+  &.active {
+    border-color: rgba(0, 0, 0, 0%) rgba(0, 0, 0, 0%) $marks-primary;
+    border-width: 0 5px 5px;
+    top: -2px;
+  }
+}
+
+.selected_el {
+  display: none;
+
+  &.selected_block {
+    display: block;
+    color: $txt-primary-selected;
     font-size: 1rem;
-    position: absolute;
-    vertical-align: top;
-    top: 0;
-    left: 0;
-    width: 100%;
-  
-    &.input_hidden {
-      visibility: hidden;
-    }
+    font-weight: 600;
   }
-  
-  .marks {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-  
-  .cross {
-    font-size: 1.4rem;
-    cursor: pointer;
-    color: $marks-primary;
-    margin-left: 5px;
-  
-    &:hover {
-      color: $marks-primary-hover;
-    }
-  }
-  
-  .arrow {
-    border-color: $marks-primary rgba(0, 0, 0, 0%) rgba(0, 0, 0, 0%);
-    border-style: solid;
-    border-width: 5px 5px 0.5px;
-    height: 0;
-    width: 0;
-    cursor: pointer;
-    margin: 0 10px;
-  
-    &:hover {
-      border-color: $marks-primary-hover rgba(0, 0, 0, 0%) rgba(0, 0, 0, 0%);
-    }
-  
-    &.active {
-      border-color: rgba(0, 0, 0, 0%) rgba(0, 0, 0, 0%) $marks-primary;
-      border-width: 0 5px 5px;
-      top: -2px;
-    }
-  }
-  
-  .selected_el {
-    display: none;
-  
-    &.selected_block {
-      display: block;
-      color: $txt-primary-selected;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-  }
-  
+}

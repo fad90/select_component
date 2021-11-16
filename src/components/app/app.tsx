@@ -26,7 +26,6 @@ const App: React.FC = () => {
   const [data, setData] = useState<any>(fruitData)
   const [loading, setLoading] = useState<boolean>(false)
   const [multiple, setMultiple] = useState<boolean>(true)
-  const [highlight, setHighlight] = useState<boolean>(false)
 
   const debouncedSearchTerm = useDebounce(termInput, 1000);
 
@@ -45,37 +44,37 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (!debouncedSearchTerm) return;
-      if (debouncedSearchTerm.length >= 0) {
-        const mockServerSearch = (debouncedSearchTerm: string, fruitData: { item: string; id: number }[]) => {
-          const isError = Math.round(Math.random())
-          const visibleItemsServer = (items: { item: string; id: number }[], debouncedSearchTerm: string) => {
-            if (debouncedSearchTerm.length === 0) {
-              return items;
-            }
-            return items.filter((item) => {
-              return item.item.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-            })
+    if (debouncedSearchTerm.length >= 0) {
+      const mockServerSearch = (debouncedSearchTerm: string, fruitData: { item: string; id: number }[]) => {
+        const isError = Math.round(Math.random())
+        const visibleItemsServer = (items: { item: string; id: number }[], debouncedSearchTerm: string) => {
+          if (debouncedSearchTerm.length === 0) {
+            return items;
           }
-          const filteredArrayServer = visibleItemsServer(fruitData, debouncedSearchTerm)
-
-          return new Promise((resolve, reject) => {
-            setLoading(true)
-            setTimeout(() => {
-              if (isError) resolve(filteredArrayServer)
-              else reject(new Error("Server search error"))
-              setLoading(false)
-            }, 2000)
+          return items.filter((item) => {
+            return item.item.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
           })
         }
-        mockServerSearch(debouncedSearchTerm, fruitData)
-          .then((filteredArrayServer) => {
-            setData(filteredArrayServer)
-          })
-          .catch(() => {
-            setData(filteredArray)
-          })
+        const filteredArrayServer = visibleItemsServer(fruitData, debouncedSearchTerm)
+
+        return new Promise((resolve, reject) => {
+          setLoading(true)
+          setTimeout(() => {
+            if (isError) resolve(filteredArrayServer)
+            else reject(new Error("Server search error"))
+            setLoading(false)
+          }, 2000)
+        })
       }
-    
+      mockServerSearch(debouncedSearchTerm, fruitData)
+        .then((filteredArrayServer) => {
+          setData(filteredArrayServer)
+        })
+        .catch(() => {
+          setData(filteredArray)
+        })
+    }
+
   }, [debouncedSearchTerm])
 
 
@@ -83,13 +82,8 @@ const App: React.FC = () => {
     const arr = []
     arr.push(item)
     setSelected((selected: any) => [...selected, item])
-
-    // setHighlight(true)
-    // const targetClassName = e.target.className + ' selected'
-    
-    // console.log(targetClassName)
   }
-  
+
   const selectOne = (item: string) => {
     setSelected(item)
   }
@@ -139,7 +133,6 @@ const App: React.FC = () => {
     selected={selected}
     multiple={multiple}
     selectOne={selectOne}
-    highlight={highlight}
   /> : null;
 
 

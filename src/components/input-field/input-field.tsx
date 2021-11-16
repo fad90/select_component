@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import styles from './input-field.module.scss';
 import { MenuProps } from '../../types';
 

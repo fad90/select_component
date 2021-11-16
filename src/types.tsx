@@ -16,5 +16,4 @@ export type DataProps = {
     selectMultiple: (selected: string, e: any) => void
     multiple: boolean
     selectOne: (selected: string) => void
-    highlight: boolean
-  }
+}
