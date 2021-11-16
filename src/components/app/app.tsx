@@ -21,7 +21,7 @@ const fruitData = [
 
 const App: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [selected, setSelected] = useState<any>([]);
+  const [selected, setSelected] = useState<string[] | string>([]);
   const [termInput, setTermInput] = useState<string>("")
   const [data, setData] = useState<any>(fruitData)
   const [loading, setLoading] = useState<boolean>(false)
@@ -31,23 +31,23 @@ const App: React.FC = () => {
   const debouncedSearchTerm = useDebounce(termInput, 1000);
 
 
-  // const visibleItems = (items: { item: string; id: number }[], termInput: string) => {
-  //   if (termInput.length === 0) {
-  //     return items
-  //   }
-  //   return items.filter((item) => {
-  //     return item.item.toLowerCase().includes(termInput.toLowerCase())
-  //   })
-  // }
+  const visibleItems = (items: { item: string; id: number }[], termInput: string) => {
+    if (termInput.length === 0) {
+      return items
+    }
+    return items.filter((item) => {
+      return item.item.toLowerCase().includes(termInput.toLowerCase())
+    })
+  }
 
-  // const filteredArray = visibleItems(fruitData, termInput)
+  const filteredArray = visibleItems(fruitData, termInput)
 
 
   useEffect(() => {
     if (!debouncedSearchTerm) return;
       if (debouncedSearchTerm.length >= 0) {
         const mockServerSearch = (debouncedSearchTerm: string, fruitData: { item: string; id: number }[]) => {
-          const isError = 1/*Math.round(Math.random())*/
+          const isError = Math.round(Math.random())
           const visibleItemsServer = (items: { item: string; id: number }[], debouncedSearchTerm: string) => {
             if (debouncedSearchTerm.length === 0) {
               return items;
@@ -72,19 +72,19 @@ const App: React.FC = () => {
             setData(filteredArrayServer)
           })
           .catch(() => {
-            console.log("error")
+            setData(filteredArray)
           })
       }
     
   }, [debouncedSearchTerm])
 
 
-  const selectMultiple = (item: string, e: any) => {
+  const selectMultiple = (item: string, e: React.MouseEvent<HTMLInputElement>) => {
     const arr = []
     arr.push(item)
     setSelected((selected: any) => [...selected, item])
 
-    setHighlight(true)
+    // setHighlight(true)
     // const targetClassName = e.target.className + ' selected'
     
     // console.log(targetClassName)

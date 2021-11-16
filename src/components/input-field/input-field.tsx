@@ -16,10 +16,16 @@ const SelectField: React.FC<MenuProps> = props => {
         classNameArrow += ` ${styles.active}`
     }
 
-    const textInput = useRef<HTMLInputElement>(null)
+    const textInput = useRef<HTMLInputElement | null>(null)
     let placeholderClassName = `${styles.placeholder}`
     if (props.active) {
-        textInput.current!.focus();
+        if (typeof textInput === "undefined") {
+            return textInput
+        }
+        if (textInput === null) {
+            return textInput
+        }
+        textInput.current?.focus()
         placeholderClassName += ` ${styles.hide}`
     }
 
